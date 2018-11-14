@@ -3,9 +3,9 @@ version: "3.5"
 services:
   fluentd:
     build: fluentd
-    restart: unless-stopped
     ports:
     - 24224:24224
+    - 24224:24224/udp
     networks:
     - logs-collector-net
 
@@ -30,6 +30,18 @@ services:
     - 5601:5601
     links:
     - elastic:elasticsearch
+    networks:
+    - logs-collector-net
+
+  web:
+    image: httpd:alpine
+    ports:
+    - 80:80
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: httpd.access
     networks:
     - logs-collector-net
 

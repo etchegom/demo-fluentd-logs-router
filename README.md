@@ -18,7 +18,13 @@ docker-compose up -d --build
 ./stresser/run.sh
 ```
 
-- Look at your logs...
+- Or/And curl the apache server to generate access logs
+
+```
+curl http://localhost/
+```
+
+- Then take a look at your logs...
 
 ... in fluentd container stdout
 
@@ -33,3 +39,10 @@ docker logs -f logscollector_fluentd_1
 ... in influxdb (through chronograf)
 
 [http://localhost:5601](http://localhost:5601)
+
+
+### Useful links
+
+https://docs.fluentd.org/v1.0/articles/out_elasticsearch
+https://docs.fluentd.org/v0.12/articles/routing-examples
+https://docs.docker.com/config/containers/logging/log_tags/
