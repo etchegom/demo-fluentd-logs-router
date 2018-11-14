@@ -1,0 +1,40 @@
+version: "3.5"
+
+services:
+  fluentd:
+    build: fluentd
+    restart: unless-stopped
+    ports:
+    - 24224:24224
+    networks:
+    - logs-collector-net
+
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.3
+    environment:
+    - discovery.type=single-node
+    - xpack.security.enabled=false
+    - http.cors.enabled=true
+    - http.cors.allow-origin=*
+    - http.cors.allow-headers=Authorization
+    volumes:
+    - es-data:/usr/share/elasticsearch/data
+    ports:
+    - 9200:9200
+    networks:
+    - logs-collector-net
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.2
+    ports:
+    - 5601:5601
+    links:
+    - elastic:elasticsearch
+    networks:
+    - logs-collector-net
+
+volumes:
+  es-data:
+
+networks:
+  logs-collector-net:
