@@ -43,7 +43,7 @@ docker logs -f logscollector_fluentd_1
 
 ### Useful links
 
-https://docs.fluentd.org/v1.0/articles/out_elasticsearch
-https://github.com/fangli/fluent-plugin-influxdb
-https://docs.fluentd.org/v0.12/articles/routing-examples
-https://docs.docker.com/config/containers/logging/log_tags/
+- https://docs.fluentd.org/v1.0/articles/out_elasticsearch
+- https://github.com/fangli/fluent-plugin-influxdb
+- https://docs.fluentd.org/v0.12/articles/routing-examples
+- https://docs.docker.com/config/containers/logging/log_tags/
