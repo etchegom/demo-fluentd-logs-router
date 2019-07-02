@@ -1,7 +1,7 @@
 
 # Logs-collector demo stack
 
-Demo how to collect, centralize and route logs into both an Elasticsearch index and an Influxdb database, using Fluentd.
+Demo how to collect, centralize and route logs into both an [Elasticsearch index](https://www.elastic.co/fr/products/elasticsearch)  and an [Influxdb database](https://github.com/influxdata/influxdb), using [Fluentd](https://www.fluentd.org/).
 
 
 ### How to run locally ?
